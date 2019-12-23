@@ -1,0 +1,32 @@
+# Maven project build directories:
+**/target
+
+# IDEA-related files and directories:
+.idea
+*/.idea
+*.iml
+*/*.iml
+
+# Eclipse-related files and directories:
+.project
+.settings
+**/.classpath
+**/.factorypath
+**/.project
+**/.settings
+
+# JRebel settings:
+**/rebel.xml
+
+# Styles source code:
+bower_components
+node_modules
+**/sass/sass-cache
+**/sass/sassy-maps
+**/sass/breakpoint
+**/sass/susy
+
+pom.xml.versionsBackup
+*.orig
+
+**/logs
