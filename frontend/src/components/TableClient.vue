@@ -72,7 +72,7 @@
     import axios from 'axios';
 
     export default {
-        name: 'Table',
+        name: 'TableClient',
         props: {
             msg: String
         },
