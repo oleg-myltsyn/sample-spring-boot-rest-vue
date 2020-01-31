@@ -38,8 +38,6 @@
                     requestFunction(data) {
                         return axios.get(this.url, {
                             params: data
-                        }).catch(function (e) {
-                            this.dispatch('error', e);
                         });
                     },
                     requestAdapter(data) {
