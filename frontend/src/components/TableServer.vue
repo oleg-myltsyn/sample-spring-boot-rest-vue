@@ -23,7 +23,11 @@
             msg: String
         },
         components: {},
-        methods: {},
+        methods: {
+            formatDate: function(date) {
+                return moment(date).format('DD-MM-YYYY HH:mm:ss');
+            }
+        },
         data() {
             return {
                 columns: ['name', 'created_at', 'updated_at', 'pushed_at'],
@@ -31,6 +35,13 @@
                 options: {
                     perPage: 25,
                     perPageValues: [25],
+                    requestFunction(data) {
+                        return axios.get(this.url, {
+                            params: data
+                        }).catch(function (e) {
+                            this.dispatch('error', e);
+                        });
+                    },
                     requestAdapter(data) {
                         return {
                             sort: data.orderBy ? data.orderBy : 'name',
@@ -45,14 +56,14 @@
                     },
                     filterable: false,
                     templates: {
-                        created_at(h, row) {
-                            return moment(row.created_at).format('DD-MM-YYYY HH:mm:ss');
+                        created_at: (h, row) => {
+                            return this.formatDate(row.created_at);
                         },
-                        updated_at(h, row) {
-                            return moment(row.updated_at).format('DD-MM-YYYY HH:mm:ss');
+                        updated_at: (h, row) => {
+                            return this.formatDate(row.updated_at);
                         },
-                        pushed_at(h, row) {
-                            return moment(row.pushed_at).format('DD-MM-YYYY HH:mm:ss');
+                        pushed_at: (h, row) => {
+                            return this.formatDate(row.pushed_at);
                         }
                     }
                 }
