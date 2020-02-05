@@ -1,7 +1,7 @@
 <template>
     <div id="table" v-cloak>
         <h1>{{ msg }}</h1>
-        <v-server-table url="https://api.github.com/users/matfish2/repos" :columns="columns" :options="options">
+        <v-server-table :url="url" :columns="columns" :options="options">
         </v-server-table>
     </div>
 </template>
@@ -20,7 +20,8 @@
     export default {
         name: 'TableServer',
         props: {
-            msg: String
+            msg: String,
+            url: String
         },
         components: {},
         methods: {
@@ -30,7 +31,7 @@
         },
         data() {
             return {
-                columns: ['name', 'created_at', 'updated_at', 'pushed_at'],
+                columns: ['id', 'username', 'email', 'created_at'],
                 tableData: [],
                 options: {
                     perPage: 25,
@@ -46,9 +47,10 @@
                             direction: data.ascending ? 'asc' : 'desc'
                         }
                     },
-                    responseAdapter({data}) {
+                    responseAdapter(response) {
+                        let data = this.getResponseData(response);
                         return {
-                            data,
+                            data: data.response,
                             count: data.length
                         }
                     },
@@ -56,12 +58,6 @@
                     templates: {
                         created_at: (h, row) => {
                             return this.formatDate(row.created_at);
-                        },
-                        updated_at: (h, row) => {
-                            return this.formatDate(row.updated_at);
-                        },
-                        pushed_at: (h, row) => {
-                            return this.formatDate(row.pushed_at);
                         }
                     }
                 }

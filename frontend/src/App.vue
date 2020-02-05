@@ -2,7 +2,7 @@
   <div id="app">
 <!--    <img alt="Vue logo" src="./assets/logo.png">-->
 <!--    <HelloWorld msg="Welcome to Your Vue.js App"/>-->
-    <TableServer msg="Welcome to Your App"/>
+    <TableServer msg="Welcome to Your App" url="http://localhost:8081/api/user/all"/>
   </div>
 </template>
 
