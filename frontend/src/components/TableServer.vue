@@ -51,7 +51,7 @@
                         let data = this.getResponseData(response);
                         return {
                             data: data.response,
-                            count: data.length
+                            count: data.response.length
                         }
                     },
                     filterable: false,
