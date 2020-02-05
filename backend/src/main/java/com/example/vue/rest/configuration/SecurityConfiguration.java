@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.cors.CorsConfiguration;
 
 import com.example.vue.rest.security.UserDetailsServiceImpl;
 
@@ -40,7 +41,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/api/auth/**").access("hasRole('ROLE_USER')")
                 .anyRequest().permitAll()
                 .and()
-                .httpBasic();
+                .httpBasic()
+                .and()
+                .cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
 
     }
 
