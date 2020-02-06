@@ -1,8 +1,6 @@
 <template>
     <div id="app">
-        <!--    <img alt="Vue logo" src="./assets/logo.png">-->
-        <!--    <HelloWorld msg="Welcome to Your Vue.js App"/>-->
-        <TableServer msg="Server Table" url="http://localhost:8081/api/user/all"/>
+        <Header msg="Welcome to Your App"/>
 
         <router-link
                 :to="{path:'/table/client'}">
@@ -19,16 +17,12 @@
 </template>
 
 <script>
-    // import HelloWorld from './components/HelloWorld.vue'
-    // import TableClient from "./components/TableClient";
-    import TableServer from "./components/TableServer";
+    import Header from './components/Header'
 
     export default {
         name: 'app',
         components: {
-            TableServer
-            // TableClient
-            // HelloWorld
+            Header
         }
     }
 </script>
