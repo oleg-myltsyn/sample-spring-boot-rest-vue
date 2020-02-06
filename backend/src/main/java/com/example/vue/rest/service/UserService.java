@@ -1,6 +1,7 @@
 package com.example.vue.rest.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.slf4j.Logger;
@@ -8,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.vue.rest.converter.UserConverter;
@@ -23,6 +25,9 @@ public class UserService {
 
     @Autowired
     private UserRepository userRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     private final Logger log = LoggerFactory.getLogger(UserService.class);
 
@@ -40,6 +45,11 @@ public class UserService {
 
     public User loadByUsername(String username){
         return userRepository.loadByUsername(username);
+    }
+
+    public boolean authorizeUser(String username, String password){
+        Optional<User> user = Optional.ofNullable(userRepository.loadByUsername(username));
+        return user.isPresent() && passwordEncoder.matches(password, user.get().getPassword() );
     }
 
 }

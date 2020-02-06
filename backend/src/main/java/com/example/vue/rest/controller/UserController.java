@@ -4,12 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.example.vue.rest.dto.Response;
+import com.example.vue.rest.dto.UserAuthRequest;
 import com.example.vue.rest.service.UserService;
 
 /**
@@ -22,6 +20,23 @@ public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @RequestMapping(
+            method = RequestMethod.POST,
+            produces = MediaType.APPLICATION_JSON_VALUE,
+            value = "authorize"
+    )
+    public ResponseEntity<Response> authUser(@RequestBody UserAuthRequest userAuthRequest) {
+
+        Boolean isAuth = userService.authorizeUser(userAuthRequest.getUsername(), userAuthRequest.getPassword());
+
+        return new ResponseEntity<>(
+                Response.builder()
+                        .response(isAuth)
+                        .build(),
+                isAuth ? HttpStatus.OK:HttpStatus.UNAUTHORIZED);
+    }
+
 
     @RequestMapping(
             method = RequestMethod.GET,
