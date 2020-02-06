@@ -1,6 +1,8 @@
 <template>
     <div id="table" v-cloak>
         <h1>{{ msg }}</h1>
+        <button v-on:click="goBack">Close table</button>
+
         <v-client-table :columns="columns" v-model="data" :options="options">
             <a slot="uri" slot-scope="props" target="_blank" :href="props.row.uri">click</a>
 
@@ -63,7 +65,7 @@
     }
 
     [v-cloak] {
-        display:none;
+        display: none;
     }
 </style>
 
@@ -92,7 +94,11 @@
                 }
             };
         },
-        methods: {}
+        methods: {
+            goBack() {
+                this.$router.push('/');
+            }
+        }
     }
 
     function getData() {

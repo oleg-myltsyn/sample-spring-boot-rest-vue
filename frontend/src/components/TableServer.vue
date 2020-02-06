@@ -1,6 +1,8 @@
 <template>
     <div id="table" v-cloak>
         <h1>{{ msg }}</h1>
+        <button v-on:click="goBack">Close table</button>
+
         <v-server-table :url="url" :columns="columns" :options="options">
         </v-server-table>
     </div>
@@ -27,6 +29,9 @@
         methods: {
             formatDate: function(date) {
                 return moment(date).format('DD-MM-YYYY HH:mm:ss');
+            },
+            goBack() {
+                this.$router.push('/');
             }
         },
         data() {
