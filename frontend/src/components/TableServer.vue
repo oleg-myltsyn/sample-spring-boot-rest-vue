@@ -18,6 +18,7 @@
 
 <script>
     import moment from 'moment';
+    import {authHeader} from '../services/auth-header';
 
     export default {
         name: 'TableServer',
@@ -43,6 +44,7 @@
                     perPageValues: [25],
                     requestFunction(data) {
                         return axios.get(this.url, {
+                            headers: authHeader(),
                             params: data
                         });
                     },

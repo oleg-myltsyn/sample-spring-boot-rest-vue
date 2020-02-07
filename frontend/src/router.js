@@ -25,7 +25,7 @@ const routes = [
             {
                 path: '/table/server',
                 component: TableServer,
-                props: {msg: 'Server Table', url: `${config.baseUrl}/user/all`}
+                props: {msg: 'Server Table', url: `${config.baseUrl}/auth/user/all`}
             }
         ]
     },
