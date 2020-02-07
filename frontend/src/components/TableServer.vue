@@ -19,6 +19,7 @@
 <script>
     import moment from 'moment';
     import {authHeader} from '../services/auth-header';
+    import {userService} from '../services/user-service';
 
     export default {
         name: 'TableServer',
@@ -46,7 +47,7 @@
                         return axios.get(this.url, {
                             headers: authHeader(),
                             params: data
-                        });
+                        }).catch((error) => {userService.logout(); location.reload(true)});
                     },
                     requestAdapter(data) {
                         return {
