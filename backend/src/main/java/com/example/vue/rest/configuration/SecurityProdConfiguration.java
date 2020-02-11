@@ -19,8 +19,8 @@ import com.example.vue.rest.security.UserDetailsServiceImpl;
  */
 @Configuration
 @EnableWebSecurity
-@Profile("!prod")
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+@Profile("prod")
+public class SecurityProdConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
     private UserDetailsServiceImpl userDetailsServiceImpl;
@@ -45,9 +45,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .httpBasic()
                 .and()
-                .cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues())
-                .and()
-                .csrf().disable();
+                .cors().configurationSource(request -> new CorsConfiguration().applyPermitDefaultValues());
 
     }
 
