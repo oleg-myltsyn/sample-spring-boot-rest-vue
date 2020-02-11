@@ -1,7 +1,7 @@
 <template>
     <div id="table" v-cloak>
         <h1>{{ msg }}</h1>
-        <button v-on:click="goBack">Close table</button>
+        <button class="btn btn-dark mb-2 mt-2" v-on:click="goBack">Close table</button>
 
         <v-client-table :columns="columns" v-model="data" :options="options">
             <a slot="uri" slot-scope="props" target="_blank" :href="props.row.uri">click</a>

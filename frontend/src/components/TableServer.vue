@@ -1,7 +1,7 @@
 <template>
     <div id="table" v-cloak>
         <h1>{{ msg }}</h1>
-        <button v-on:click="goBack">Close table</button>
+        <button class="btn btn-dark mb-2 mt-2" v-on:click="goBack">Close table</button>
 
         <v-server-table :url="url" :columns="columns" :options="options">
         </v-server-table>
@@ -9,10 +9,7 @@
 </template>
 
 <style>
-    #table {
-        width: 95%;
-        margin: 0 auto;
-    }
+
 </style>
 
 
