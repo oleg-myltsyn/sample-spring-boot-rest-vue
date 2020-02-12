@@ -8,7 +8,7 @@ import com.example.vue.rest.entity.User;
  */
 public class UserConverter {
 
-    public static UserDTO toDto(com.example.vue.rest.entity.User userEntity){
+    public static UserDTO toDto(User userEntity){
         return new UserDTO(userEntity.getId(),
                 userEntity.getUsername(),
                 userEntity.getPassword(),
