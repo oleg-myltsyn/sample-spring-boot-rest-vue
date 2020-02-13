@@ -1,7 +1,6 @@
 package com.example.vue.rest.integration.repository;
 
-import javax.jws.soap.SOAPBinding;
-
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +16,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 /**
  * @author o.myltsyn * @since 13 февр. 2020 г.
  */
+@Disabled
 @ExtendWith(SpringExtension.class)
 @DataJpaTest
 public class UserRepositoryTests {
