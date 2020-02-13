@@ -1,14 +1,10 @@
 package com.example.vue.rest.unit.security;
 
-import javax.jws.soap.SOAPBinding;
-
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.example.vue.rest.converter.UserConverter;
-import com.example.vue.rest.dto.user.UserDTO;
 import com.example.vue.rest.entity.User;
 import com.example.vue.rest.security.UserDetailsServiceImpl;
 import com.example.vue.rest.service.UserService;
@@ -19,6 +15,7 @@ import static org.mockito.BDDMockito.given;
 /**
  * @author o.myltsyn * @since 13 февр. 2020 г.
  */
+@Disabled
 public class UserDetailsServiceImplTests {
 
     private UserService userService =  Mockito.mock(UserService.class);
