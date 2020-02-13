@@ -38,5 +38,7 @@ public class UserRepositoryTests {
         User found = userRepository.loadByUsername(user.getUsername());
 
         assertEquals(found.getUsername(),user.getUsername());
+        assertEquals(found.getPassword(),user.getPassword());
+        assertEquals(found.getEmail(),user.getEmail());
     }
 }

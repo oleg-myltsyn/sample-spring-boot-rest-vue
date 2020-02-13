@@ -23,16 +23,21 @@ import com.example.vue.rest.repository.UserRepository;
 @Service
 public class UserService {
 
-    @Autowired
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
+
+    private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+        this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
+    }
 
     private final Logger log = LoggerFactory.getLogger(UserService.class);
 
     public List<UserDTO> getAll(){
-        if (!(SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof String))
+        if (SecurityContextHolder.getContext().getAuthentication() != null &&
+                SecurityContextHolder.getContext().getAuthentication().getPrincipal() instanceof UserDetails)
             log.info("Method GET ALL USERS used by: " +
                 ((UserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUsername());
 
@@ -49,7 +54,7 @@ public class UserService {
 
     public boolean authorizeUser(String username, String password){
         Optional<User> user = Optional.ofNullable(userRepository.loadByUsername(username));
-        return user.isPresent() && passwordEncoder.matches(password, user.get().getPassword() );
+        return user.isPresent() && passwordEncoder.matches(password, user.get().getPassword());
     }
 
 }
