@@ -3,6 +3,8 @@ package com.example.vue.rest.integration.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -110,6 +112,17 @@ public class UserControllerTests {
                 .andExpect(jsonPath("$.response.username", is(userDTO.getUsername())))
                 .andExpect(jsonPath("$.response.password", is(userDTO.getPassword())))
                 .andExpect(jsonPath("$.response.email", is(userDTO.getEmail())));
+    }
+
+    @Test
+    public void testUserByIdNotFound() throws Exception {
+        Integer userId = 1;
+
+        given(userService.getUserById(userId)).willThrow(EntityNotFoundException.class);
+
+        mvc.perform(get("/api/user/"+ userId)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
     }
 
 }
