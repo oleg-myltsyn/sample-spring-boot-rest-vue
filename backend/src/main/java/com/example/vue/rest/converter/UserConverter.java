@@ -1,6 +1,6 @@
 package com.example.vue.rest.converter;
 
-import com.example.vue.rest.dto.UserDTO;
+import com.example.vue.rest.dto.user.UserDTO;
 import com.example.vue.rest.entity.User;
 
 /**

@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import com.example.vue.rest.converter.UserConverter;
-import com.example.vue.rest.dto.UserDTO;
+import com.example.vue.rest.dto.user.UserDTO;
 import com.example.vue.rest.entity.User;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

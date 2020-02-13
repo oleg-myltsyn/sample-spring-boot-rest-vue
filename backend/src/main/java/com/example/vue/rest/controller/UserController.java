@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.example.vue.rest.dto.Response;
-import com.example.vue.rest.dto.UserAuthRequest;
+import com.example.vue.rest.dto.user.UserAuthRequest;
 import com.example.vue.rest.service.UserService;
 
 /**

@@ -1,4 +1,4 @@
-package com.example.vue.rest.dto;
+package com.example.vue.rest.dto.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

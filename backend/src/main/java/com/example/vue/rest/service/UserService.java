@@ -13,7 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.example.vue.rest.converter.UserConverter;
-import com.example.vue.rest.dto.UserDTO;
+import com.example.vue.rest.dto.user.UserDTO;
 import com.example.vue.rest.entity.User;
 import com.example.vue.rest.repository.UserRepository;
 
